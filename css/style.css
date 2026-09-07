@@ -58,7 +58,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .reveal.is-in{opacity:1;transform:none}
 .split .ch{display:inline-block;opacity:0;transform:translateY(.7em);transition:opacity .5s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
 .split.is-in .ch{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.reveal,.split .ch{opacity:1;transform:none;transition:none}.tape__track,.fv__scroll span{animation:none!important}}
+@media(prefers-reduced-motion:reduce){.reveal,.split .ch{opacity:1;transform:none;transition:none}.tape__track,.fv__scroll span,.fv__status .dot{animation:none!important}}
 
 /* Bowl mask（下が半円） */
 .bowl{position:relative;overflow:hidden;border-radius:0 0 9999px 9999px;background:var(--bg3)}
@@ -112,6 +112,17 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @keyframes waveFlow{to{background-position-x:2.2em}}
 @media(prefers-reduced-motion:reduce){.fv__wave::after{clip-path:none;animation:none}}
 
+.fv__date{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:8px;margin-top:22px}
+.fv__date span{display:inline-flex;align-items:baseline;gap:8px;border-radius:999px;padding:10px 18px;font-family:var(--en);font-weight:600;font-size:13px;letter-spacing:.02em;border:1.5px solid var(--ink);background:var(--bg2)}
+.fv__date small{font-family:var(--jp);font-weight:700;font-size:11px;color:var(--mute)}
+.fv__date-main{background:var(--ink)!important;color:#fff}
+.fv__date-main b{font-weight:800;font-size:20px;letter-spacing:-.01em}
+.fv__date-main small{color:rgba(255,255,255,.7)}
+.fv__status{grid-column:1/-1;display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:13.5px;justify-content:center}
+.fv__status .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(229,50,28,.5);animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(229,50,28,.55)}70%{box-shadow:0 0 0 10px rgba(229,50,28,0)}100%{box-shadow:0 0 0 0 rgba(229,50,28,0)}}
+.badge{display:inline-block;vertical-align:middle;margin-left:14px;background:var(--accent);color:#fff;font-size:12px;font-weight:700;letter-spacing:.04em;padding:6px 14px;border-radius:999px;line-height:1.4;position:relative;top:-.35em}
+.tape__hot{color:var(--accent)}
 .bowls{display:flex;justify-content:center;align-items:flex-start;gap:16px;margin-top:1.6vw;position:relative;z-index:1}
 .bowl--main{width:min(58vw,720px);aspect-ratio:1080/653;flex:none}
 .bowl--side{width:min(42vw,520px);aspect-ratio:1080/653;flex:none;margin-top:5.5vw}
@@ -122,7 +133,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .fv__foot{position:relative;z-index:2;margin-top:40px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;padding:0 48px}
 .fv__meta p{font-family:var(--en);font-weight:400;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);line-height:1.7}
 .fv__meta b{display:block;font-weight:800;font-size:22px;letter-spacing:-.01em;color:var(--ink);line-height:1.2}
-.fv__cta{display:flex;gap:12px;justify-content:center}
+.fv__cta{display:grid;grid-template-columns:auto auto;gap:12px;justify-content:center}
 .fv__scroll{justify-self:end;font-family:var(--en);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:10px;color:var(--ink2)}
 .fv__scroll span{width:40px;height:1px;background:var(--ink);position:relative;overflow:hidden}
 .fv__scroll span::after{content:"";position:absolute;inset:0;background:var(--accent);animation:sd 2s infinite}
@@ -143,8 +154,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .bowl--side{width:min(50vw,280px);aspect-ratio:327/391;margin-top:14vw}
   .fv__foot{grid-template-columns:1fr;padding:0 30px;margin-top:28px;gap:18px;text-align:center}
   .fv__meta{display:flex;justify-content:center;gap:28px;text-align:left}
-  .fv__cta{flex-direction:column}
+  .fv__cta{grid-template-columns:1fr}
   .fv__cta .pill{width:100%}
+  .fv__date{gap:6px;margin-top:16px}
+  .fv__date span{padding:8px 14px;font-size:12px}
+  .fv__date-main b{font-size:18px}
+  .badge{display:block;width:max-content;margin:10px 0 0;top:0}
   .fv__scroll{display:none}
 }
 @media(max-width:480px){.fv__meta{flex-direction:column;gap:8px;align-items:center;text-align:center}}
